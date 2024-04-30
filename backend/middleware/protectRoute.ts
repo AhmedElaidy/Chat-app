@@ -19,8 +19,6 @@ const protectRoute = async (req: any, res: any, next: any) => {
 
     const user = await User.findById(decoded.userId).select("-password");
 
-    console.log("user is ", user);
-
     if (!user) {
       return res.status(401).json({ error: "User Not Found" });
     }
