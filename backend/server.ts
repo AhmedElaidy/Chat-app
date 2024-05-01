@@ -16,10 +16,6 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-// app.get("/", (req: any, res: any) => {
-//   res.send("Hello World!");
-// });
-
 app.listen(PORT, () => {
   connectToMongoDB(), console.log(`app listening on port ${PORT}`);
 });
