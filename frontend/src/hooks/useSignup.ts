@@ -1,0 +1,55 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+import axiosClient from "../../client/axiosClient";
+import { API_CONSTANTS } from "../../client/api-constants";
+interface inputs {
+  fullName: string;
+  username: string;
+  password: string;
+  confirmPassword: string;
+  gender: string;
+}
+export default function useSignup() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signup = async (inputs: inputs) => {
+    const isInputsSuccess = handleInputErrors(inputs);
+    if (!isInputsSuccess) return;
+    setIsLoading(true);
+
+    try {
+      const res = await axiosClient.post(API_CONSTANTS.auth.signup, inputs);
+
+      const data = await res.data;
+
+      toast.success("You signedup successfully!");
+      console.log("data is ", data);
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { isLoading, signup };
+}
+
+function handleInputErrors(inputs: inputs) {
+  const { fullName, username, password, confirmPassword, gender } = inputs;
+
+  if (!fullName || !username || !password || !confirmPassword || !gender) {
+    toast.error("Please fill all the fields ");
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    toast.error("Passwords do not match");
+    return false;
+  }
+
+  if (password.length < 6) {
+    toast.error("Passwords must be at least 6 characters");
+    return false;
+  }
+  return true;
+}
