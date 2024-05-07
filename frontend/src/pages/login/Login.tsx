@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 function Login() {
+  const inputStyles = "w-full input input-bordered h-10";
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="rounded-lg w-full p-6 shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -11,11 +14,7 @@ function Login() {
             <label htmlFor="" className="label p-2">
               <span className="text-base label-text text-black">Username</span>
             </label>
-            <input
-              type="text"
-              placeholder="Johndoe"
-              className="w-full input input-bordered h-10 "
-            />
+            <input type="text" placeholder="Johndoe" className={inputStyles} />
           </div>
           <div>
             <label htmlFor="" className="label p-2">
@@ -24,15 +23,15 @@ function Login() {
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full input input-bordered h-10"
+              className={inputStyles}
             />
           </div>
-          <a
-            href=""
+          <Link
+            to="/signup"
             className="text-sm hover:underline hover:text-blue-300 mt-2 inline-block "
           >
             {"Don't"} have an account?
-          </a>
+          </Link>
           <div>
             <button className="btn btn-block btn-sm mt-2">Login</button>
           </div>
