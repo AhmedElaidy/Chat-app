@@ -2,6 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axiosClient from "../../client/axiosClient";
 import { API_CONSTANTS } from "../../client/api-constants";
+import { useAuthContext } from "../context/AuthContext";
 interface inputs {
   fullName: string;
   username: string;
@@ -12,6 +13,7 @@ interface inputs {
 export default function useSignup() {
   const [isLoading, setIsLoading] = useState(false);
 
+  const { authUser, setAuthUser } = useAuthContext();
   const signup = async (inputs: inputs) => {
     const isInputsSuccess = handleInputErrors(inputs);
     if (!isInputsSuccess) return;
@@ -22,8 +24,14 @@ export default function useSignup() {
 
       const data = await res.data;
 
-      toast.success("You signedup successfully!");
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       console.log("data is ", data);
+      console.log("JSON.stringify(data) is ", JSON.stringify(data));
+      localStorage.setItem("chat-user", JSON.stringify(data));
+      setAuthUser(data);
     } catch (error: any) {
       toast.error(error.message);
     } finally {
