@@ -1,13 +1,23 @@
 import { createContext, useContext, useState } from "react";
 import React from "react";
+
+interface authUser {
+  _id: string;
+  fullname: string;
+  username: string;
+  gender: "male" | "female";
+  profilePic: string;
+  __v: number;
+}
+
 interface AuthContextType {
-  authUser: {};
+  authUser: authUser | null;
   setAuthUser: React.Dispatch<any>;
 }
 
 // Define the default context value
 const defaultAuthContext: AuthContextType = {
-  authUser: {},
+  authUser: null,
   setAuthUser: () => {},
 };
 

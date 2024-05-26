@@ -1,11 +1,14 @@
 export const API_CONSTANTS = {
   auth: {
     signup: "/api/auth/signup",
+    logout: "/api/auth/logout",
+    login: "/api/auth/login",
   },
-  store: {
-    info: "/StoreApi/storeInfo",
-    uploadImg:
-      "https://api.imgbb.com/1/upload?key=91703bdcdf68e99ee2b7388bd12d60b9",
-    signoutFromGoogle: "/StoreApi/googleAuth",
+  users: {
+    getAll: "/api/users",
+  },
+  messages: {
+    getAll: "/api/messages/",
+    send: "/api/messages/send/",
   },
 };

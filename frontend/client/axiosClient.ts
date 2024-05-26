@@ -9,7 +9,9 @@ axiosClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    return error;
+    if (error?.response) throw new Error(error?.response.data.error);
+    if (error?.message) throw new Error(error.message);
+    throw new Error(error);
   }
 );
 
