@@ -30,7 +30,7 @@ export default function SocketContextProvider({
   const { authUser } = useAuthContext();
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://chat-app-3nz9.onrender.com", {
         query: {
           userId: authUser._id,
         },
