@@ -98,9 +98,16 @@ function SignUp() {
           >
             Already have an account?
           </Link>
-          <div>
-            <button className="btn btn-block btn-sm mt-2 border bg-slate-400 border-slate-700">
-              Sign Up
+          <div className="flex justify-center">
+            <button
+              className="btn btn-block btn-sm mt-2 border bg-slate-400 border-slate-700"
+              disabled={isLoading}
+            >
+              {!isLoading ? (
+                "Sign Up"
+              ) : (
+                <span className="loading loading-spinner text-white"></span>
+              )}
             </button>
           </div>
         </form>
