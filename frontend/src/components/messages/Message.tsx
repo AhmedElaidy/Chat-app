@@ -53,7 +53,6 @@ export default function Message({ message }: { message: MessageType }) {
   const handleDelete = async () => {
     toast.dismiss();
     toast.loading("Deleting Message...");
-    console.log("Deleting Message...");
     await deleteMessage(message._id);
     toast.dismiss();
     toast.success("Message Deleted Successfully");

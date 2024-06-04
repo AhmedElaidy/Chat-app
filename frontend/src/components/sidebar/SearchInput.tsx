@@ -21,17 +21,15 @@ export default function SearchInput() {
     }
   }, [search]);
   return (
-    <div className="flex items-center gap-2">
+    <div className="gap-2 relative">
       <input
         type="text"
         placeholder="Search..."
-        className="input input-bordered rounded-full"
+        className="input input-bordered rounded-full w-full"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button type="submit" className="btn btn-circle bg-sky-500 text-white">
-        <IoSearchSharp className="w-6 h-6 outline-none" />
-      </button>
+      <IoSearchSharp className="w-6 h-6 outline-none bg-white text-sky-500 absolute right-4 top-3" />
     </div>
   );
 }
