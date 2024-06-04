@@ -31,14 +31,14 @@ export default function SocketContextProvider({
   useEffect(() => {
     if (authUser) {
       const socket = io("https://chat-app-3nz9.onrender.com", {
+        // const socket = io("http://localhost:5000", 
         query: {
           userId: authUser._id,
         },
       });
 
       setSocket(socket);
-
-      socket.on("getOnlineUsers", (users) => {
+      socket?.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
 
