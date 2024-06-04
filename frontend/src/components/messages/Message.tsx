@@ -40,11 +40,7 @@ export default function Message({ message }: { message: MessageType }) {
             onClick={handleDelete}
             disabled={isLoading}
           >
-            {!isLoading ? (
-              "Yes"
-            ) : (
-              <span className="loading loading-spinner text-white"></span>
-            )}{" "}
+            Yes
           </button>
           <button className="btn btn-active" onClick={() => toast.dismiss()}>
             No
@@ -55,6 +51,9 @@ export default function Message({ message }: { message: MessageType }) {
   };
 
   const handleDelete = async () => {
+    toast.dismiss();
+    toast.loading("Deleting Message...");
+    console.log("Deleting Message...");
     await deleteMessage(message._id);
     toast.dismiss();
     toast.success("Message Deleted Successfully");
