@@ -36,7 +36,7 @@ export default function Conversation({ conversation, lastIdx }: Conversation) {
         </div>
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
-            <p className="font-bold text-gray-200">{fullName}</p>
+            <p className=" text-gray-200">{fullName}</p>
           </div>
         </div>
       </div>

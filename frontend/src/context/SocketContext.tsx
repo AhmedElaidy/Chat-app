@@ -31,8 +31,8 @@ export default function SocketContextProvider({
   const { authUser } = useAuthContext();
   useEffect(() => {
     if (authUser) {
-      // const socket = io("https://chat-app-3nz9.onrender.com", {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://chat-app-3nz9.onrender.com", {
+        // const socket = io("http://localhost:5000", {
         query: {
           userId: authUser._id,
         },
@@ -40,9 +40,7 @@ export default function SocketContextProvider({
 
       setSocket(socket);
 
-      socket.on("getOnlineUsers", (users) => {
-        console.log("users are ", users);
-        toast.success("user logged in ", { duration: 3000 });
+      socket?.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
 
