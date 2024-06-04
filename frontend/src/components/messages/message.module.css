@@ -1,0 +1,27 @@
+.message {
+  transition: 0.3s ease-in-out;
+}
+.message_content {
+  position: relative;
+}
+
+.message_content svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.message:hover {
+  background-color: rgb(230, 76, 76);
+}
+
+.message:hover p {
+  visibility: hidden;
+}
+
+.message:hover svg {
+  visibility: unset;
+}
