@@ -14,7 +14,7 @@ export default function Message({ message }: { message: MessageType }) {
   const { selectedConversation } = useConversation();
   const isRecievedMessage = receiverId === authUser?._id;
   const formattedMessageTime = extractTime(createdAt);
-  const { deleteMessage } = useDeleteMessage();
+  const { isLoading, deleteMessage } = useDeleteMessage();
 
   const chatCLassName = isRecievedMessage ? "chat-start" : "chat-end";
   const bubbleBgColor = isRecievedMessage ? "" : "bg-blue-500 ";
@@ -35,8 +35,16 @@ export default function Message({ message }: { message: MessageType }) {
       <div>
         <div>Are you sure you want to delete message?</div>
         <div className="flex justify-around">
-          <button className="btn btn-error" onClick={handleDelete}>
-            Yes
+          <button
+            className="btn btn-error"
+            onClick={handleDelete}
+            disabled={isLoading}
+          >
+            {!isLoading ? (
+              "Yes"
+            ) : (
+              <span className="loading loading-spinner text-white"></span>
+            )}{" "}
           </button>
           <button className="btn btn-active" onClick={() => toast.dismiss()}>
             No
