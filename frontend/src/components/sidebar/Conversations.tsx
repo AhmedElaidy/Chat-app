@@ -7,7 +7,7 @@ export default function Conversations() {
   const { isLoading } = useGetConversations();
   const { shownConversations } = useShownConversations();
   return (
-    <div className=" py-2 flex flex-col overflow-auto">
+    <div className=" py-2 flex flex-col overflow-auto h-[15vh] md:h-[100%]">
       {!isLoading ? (
         shownConversations?.map((conversation: conversation, idx: number) => (
           <Conversation

@@ -17,7 +17,7 @@ export default function MessagesContainer() {
     };
   }, []);
   return (
-    <div className="md:w-[600px] flex flex-col">
+    <div className="h-[100%] md:h-auto md:w-[600px] flex flex-col">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
