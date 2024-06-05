@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 export default function Sidebar() {
   return (
-    <div className="border-b md:border-r md:border-b-0 border-slate-500 p-4 flex flex-col gap-3">
+    <div className="border-b md:border-r md:border-b-0 border-slate-500 p-4 pb-1 md:pb-4 flex flex-col gap-3">
       <SearchInput />
       <Conversations />
       <LogoutButton className="hidden md:block" />
