@@ -32,25 +32,31 @@ export default function Message({ message }: { message: MessageType }) {
   const showDeleteToast = () => {
     toast.dismiss();
     toast(
-      <div>
-        <div>Are you sure you want to delete message?</div>
-        <div className="flex justify-around">
-          <button
-            className="btn btn-error"
-            onClick={handleDelete}
-            disabled={isLoading}
-          >
+      <form onSubmit={handleDelete}>
+        <div className="text-center">
+          Are you sure you want to delete this message?
+        </div>
+        <div className="flex justify-around mt-1">
+          <button className="btn btn-error" disabled={isLoading} type="submit">
             Yes
           </button>
-          <button className="btn btn-active" onClick={() => toast.dismiss()}>
+          <button
+            type="button"
+            className="btn btn-active"
+            onClick={() => toast.dismiss()}
+          >
             No
           </button>
         </div>
-      </div>
+      </form>,
+      {
+        duration: 5000,
+      }
     );
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     toast.dismiss();
     toast.loading("Deleting Message...");
     await deleteMessage(message._id);

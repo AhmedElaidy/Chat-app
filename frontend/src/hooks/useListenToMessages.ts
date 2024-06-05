@@ -19,7 +19,6 @@ export default function useListenToMessages() {
     });
 
     socket?.on("deletedMessage", (messageId) => {
-      console.log("message deleted and it's id is ", messageId);
       setMessages(
         messages?.map((msg) =>
           msg._id === messageId ? { ...msg, message: "" } : msg
