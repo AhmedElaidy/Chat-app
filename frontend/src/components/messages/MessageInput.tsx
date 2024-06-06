@@ -19,7 +19,9 @@ export default function MessageInput() {
           className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white"
           placeholder="Sent a message"
           value={currentMessage}
-          onChange={(e: any) => setCurrentMessage(e.target.value)}
+          onChange={(e: any) =>
+            !isLoading ? setCurrentMessage(e.target.value) : () => {}
+          }
         />
         <button
           className="absolute inset-y-0 end-0 flex items-center pe-3"

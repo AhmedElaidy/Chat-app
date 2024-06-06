@@ -9,6 +9,7 @@ export const API_CONSTANTS = {
   },
   messages: {
     getAll: "/api/messages/",
-    send: "/api/messages/send/",
+    send: "/api/messages/",
+    delete: "/api/messages/",
   },
 };

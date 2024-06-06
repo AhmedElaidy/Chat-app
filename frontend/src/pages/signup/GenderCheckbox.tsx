@@ -12,7 +12,7 @@ function GenderCheckbox({ selectedGender, setSelectedGender }: GenderCheckbox) {
             selectedGender === "male" ? "selected" : ""
           }`}
         >
-          <span className="label-text font-bold">Male</span>
+          <span className="label-text ">Male</span>
           <input
             id="male"
             name="male"
@@ -29,7 +29,7 @@ function GenderCheckbox({ selectedGender, setSelectedGender }: GenderCheckbox) {
             selectedGender === "female" ? "selected" : ""
           }`}
         >
-          <span className="label-text font-bold">Female</span>
+          <span className="label-text">Female</span>
           <input
             id="female"
             name="female"

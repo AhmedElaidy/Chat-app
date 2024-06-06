@@ -7,9 +7,7 @@ export default function useListenToMessages() {
   const { socket } = useSocketContext();
   const { messages, setMessages } = useConversation();
   useEffect(() => {
-    console.log("inside useEffect of messages");
     socket?.on("newMessage", (newMessage) => {
-      console.log("inside soket of new messages");
       newMessage.shouldShake = true;
       const sound = new Audio(notificationSound);
       sound.play();
@@ -19,9 +17,17 @@ export default function useListenToMessages() {
           : [newMessage]
       );
     });
+
+    socket?.on("deletedMessage", (messageId) => {
+      setMessages(
+        messages?.map((msg) =>
+          msg._id === messageId ? { ...msg, message: "" } : msg
+        )
+      );
+    });
     return () => {
-      console.log("inside return of useEffect of messages");
       socket?.off("newMessage");
+      socket?.off("deletedMessage");
     };
   }, [messages]);
 }

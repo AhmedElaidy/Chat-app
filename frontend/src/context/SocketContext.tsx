@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import io, { Socket } from "socket.io-client";
-import toast from "react-hot-toast";
 
 interface SocketContextType {
   socket: Socket | null;
@@ -31,18 +30,15 @@ export default function SocketContextProvider({
   const { authUser } = useAuthContext();
   useEffect(() => {
     if (authUser) {
-      // const socket = io("https://chat-app-3nz9.onrender.com", {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://chat-app-3nz9.onrender.com", {
+        // const socket = io("http://localhost:5000", 
         query: {
           userId: authUser._id,
         },
       });
 
       setSocket(socket);
-
-      socket.on("getOnlineUsers", (users) => {
-        console.log("users are ", users);
-        toast.success("user logged in ", { duration: 3000 });
+      socket?.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
 

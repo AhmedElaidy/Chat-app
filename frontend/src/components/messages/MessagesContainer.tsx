@@ -17,20 +17,17 @@ export default function MessagesContainer() {
     };
   }, []);
   return (
-    <div className="md:w-[600px] flex flex-col">
+    <div className="h-[100%] md:h-auto md:w-[600px] flex flex-col">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
-          {/*header*/}
           <div
             className="bg-slate-500 px-4 py-2 mb-2 flex gap-1"
             style={{ alignItems: "center" }}
           >
             <span className="label-text font-semibold">To : </span>
-            <span className="font-bold text-white">
-              {selectedConversation.fullName}
-            </span>
+            <span className=" text-white">{selectedConversation.fullName}</span>
             <span
               className={` outline-white outline-4 ${
                 isOnline ? "text-green-500" : "text-red-500"
